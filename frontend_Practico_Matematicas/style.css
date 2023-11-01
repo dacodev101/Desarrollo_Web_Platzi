@@ -26,6 +26,7 @@ html{
 body{
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 /* Header */
 header{
@@ -34,7 +35,7 @@ header{
     flex-direction: column;
     justify-content: center;
     min-width: 320px;
-    height: 30rem;
+    height: 24rem;
     padding: 10px;
     text-align: center;
     border: 2px solid var(--main-focus);
@@ -43,7 +44,8 @@ header{
 header h1{
     font-size: 2.6rem;
     font-weight: bold;
-    line-height: 2.6rem;
+    line-height: 3.5rem;
+    letter-spacing: .1rem;
     color: var(--surfie-green-50);
     
 }
@@ -55,10 +57,12 @@ header p{
 /* Main */
 main{
     display: flex;
+    flex-grow: 1;
+    height: calc(100vh - (30rem + 130px) );
     justify-content: center;
-    flex: 1;
-    min-width: 320px;
+    align-items: center;
     margin-top: 30px;
+    min-width: 320px;
 }
 main ul{
     display: flex;
@@ -101,8 +105,7 @@ footer{
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 110px;
-    margin-top: 50px;
+    height: 80px;
 }
 .header--container-left{
     display: flex;
@@ -119,7 +122,6 @@ footer{
 .header--container-right{
     width: 100%;
     height: 50%;
-    padding-top: 20px;
 }
 .header--container-right ul{
     display: flex;
@@ -149,6 +151,10 @@ footer{
     }
     header p{
         font-size: var(--lg);
+    }
+    main{
+        height: calc(100vh - (30rem + 109px) );
+        flex-grow: 1;
     }
     main ul{
         flex-direction: row;
