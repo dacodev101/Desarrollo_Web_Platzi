@@ -35,7 +35,7 @@ header{
     flex-direction: column;
     justify-content: center;
     min-width: 320px;
-    height: 24rem;
+    height: 17rem;
     padding: 10px;
     text-align: center;
     border: 2px solid var(--main-focus);
@@ -65,7 +65,7 @@ main{
 }
 .card--container{
     width: 190px;
-    height: 250px;
+    height: 280px;
     background: var(--main-focus);
     padding: 1rem;
     border-radius: 1rem;
@@ -89,11 +89,16 @@ main{
 }
 .container--result-porcentaje {
     display: flex;
+    max-height: 120px;
     color: #05060f;
     font-size: 1.8rem;
     line-height: 1.25;
     font-weight: 700;
 }
+.container--result-porcentaje p{
+    text-overflow: ellipsis;
+}
+
 
 .container--input {
     display: flex;

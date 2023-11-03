@@ -35,7 +35,7 @@ header{
     flex-direction: column;
     justify-content: center;
     min-width: 320px;
-    height: 24rem;
+    height: 17rem;
     padding: 10px;
     text-align: center;
     border: 2px solid var(--main-focus);
