@@ -5,38 +5,43 @@ const botonPromedio = document.querySelector(".promedio");
 const botonMediana = document.querySelector(".mediana");
 const botonModa = document.querySelector(".moda");
 
-botonPromedio.addEventListener("click", () => calcularPromedio(convertirInputANumerosYTexto(inputArray))
+botonPromedio.addEventListener("click", () =>
+  calcularPromedio(convertirInputANumerosYTexto(inputArray))
 );
 botonMediana.addEventListener("click", () =>
-    calcularMediana(convertirInputANumerosYTexto(inputArray))
+  calcularMediana(convertirInputANumerosYTexto(inputArray))
 );
-botonModa.addEventListener("click", () => calcularModa(convertirInputANumerosYTexto(inputArray)));
+botonModa.addEventListener("click", () =>
+  calcularModa(convertirInputANumerosYTexto(inputArray))
+);
 
-function calcularPromedio(array) {
+calcularPromedio = function calcularPromedio(array) {
   // function sumarElementos (valorAcumulado, nuevoValor){
   //     return valorAcumulado + nuevoValor
   // }
   const sumaLista = array.reduce((acumulador, actual) => {
-    console.log(acumulador, actual);
     return acumulador + actual;
   });
-  resultado =  Math.round(((sumaLista / array.length) * 100)) / 100 ;
+  resultado = Math.round((sumaLista / array.length) * 100) / 100;
   resultadoOperacion.innerText = `Promedio == ${resultado} `;
-}
+  return resultado
+};
 
-function esPar(Lista) {
+esPar = function esPar(Lista) {
   return Lista.length % 2 ? false : true;
-}
+};
 
-function ordenarLista(lista) {
+ordenarLista = function ordenarLista(lista) {
   return lista.sort((a, b) => a - b);
-}
+};
 
-function ordenarListaBidimensional(lista) {
+ordenarListaBidimensional = function ordenarListaBidimensional(
+  lista
+) {
   return lista.sort((a, b) => a[1] - b[2]);
-}
+};
 
-function calcularMediana(listaMediana) {
+calcularMediana = function calcularMediana(listaMediana) {
   const lista = ordenarLista(listaMediana);
   const listaEsPar = esPar(lista);
 
@@ -45,13 +50,17 @@ function calcularMediana(listaMediana) {
     const sumaMitades =
       (lista[indexMitadLista] + lista[indexMitadLista - 1]) / 2;
     resultadoOperacion.innerText = `Mediana ${sumaMitades} `;
+    return sumaMitades;
   } else {
     const indexMitadListaImpar = Math.floor(lista.length / 2);
     resultadoOperacion.innerText = `Mediana == ${lista[indexMitadListaImpar]}`;
+    const medianaImpares = lista[indexMitadListaImpar];
+    console.log(medianaImpares);
+    return medianaImpares;
   }
-}
+};
 
-function calcularModa(lista) {
+calcularModa = function calcularModa(lista) {
   lista.sort();
 
   const objDatos = {};
@@ -68,23 +77,27 @@ function calcularModa(lista) {
       modas.push(valor);
     }
   }
-  resultadoOperacion.innerText = `Moda == ${
-    modas.length === 1 ? modas[0] : modas
-  }`;
-}
+  resultadoOperacion.innerText = `Moda == ${modas.length === 1 ? modas[0] : modas
+    }`;
+};
 
-function convertirInputANumerosYTexto(input) {
-    const valores = input.value.split(" ");
-    const arrayNumeros = valores.map((valor) => {
-        if (isNaN(valor)) {
-            return valor;
-        } else {
-            return Number(valor);
-        }
-    });
-    const arrayTexto = valores.filter((valor) => isNaN(valor));
-    const arrayNumerosTexto = ordenarLista([...arrayNumeros, ...arrayTexto])
-    inputOrdenado.innerText = arrayNumerosTexto.join(" ")
-    inputOrdenado.classList.remove('inactive')
-    return arrayNumerosTexto;
-}
+convertirInputANumerosYTexto = function convertirInputANumerosYTexto(
+  input
+) {
+  const valores = input.value.split(" ");
+  const arrayNumeros = valores.map((valor) => {
+    if (isNaN(valor)) {
+      return valor;
+    } else {
+      return Number(valor);
+    }
+  });
+  const arrayTexto = valores.filter((valor) => isNaN(valor));
+  const arrayNumerosTexto = ordenarLista([
+    ...arrayNumeros,
+    ...arrayTexto,
+  ]);
+  inputOrdenado.innerText = arrayNumerosTexto.join(" ");
+  inputOrdenado.classList.remove("inactive");
+  return arrayNumerosTexto;
+};
