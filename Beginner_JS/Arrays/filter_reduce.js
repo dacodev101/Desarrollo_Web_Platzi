@@ -26,3 +26,13 @@ const repitedWords = words.reduce((acc, curr) => {
 }, {})
 
 console.log(words, repitedWords);
+
+
+// Exercise: Passing Grade Average
+
+const grades = [85, 92, 60, 78, 95, 66, 88, 50 , 68, 94]
+const passingGrades = grades.filter(grade => grade >= 70)
+
+const averagePassingGrade = passingGrades.reduce((sum, grade) => sum + grade, 0) / passingGrades.length
+
+console.log(grades, passingGrades, averagePassingGrade);

@@ -27,3 +27,4 @@ numbersArray.forEach(number => {
 )
 
 console.log(numbersArray, suma);
+
